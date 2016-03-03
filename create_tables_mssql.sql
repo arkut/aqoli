@@ -4,157 +4,156 @@
 /* Not all geographies necessary right now for Alexandria -- future-proofing */
 
 /*REGION*/
-Create table region (
-	regionID int NOT NULL,
-    regionFips varchar(1) NOT NULL,
-    regionName varchar(9) NOT NULL,
-    Primary key (regionID)
-);
+CREATE TABLE region (
+    regionID INT IDENTITY(1,1) NOT NULL,
+    regionFips NVARCHAR(1) NOT NULL,
+    regionName NVARCHAR(9) NOT NULL,
+    PRIMARY KEY (regionID)
+) ON [PRIMARY];
 
 /*DIVISION*/
-Create table divis (
-	divisID int NOT NULL,
-    divisFips varchar(1) NOT NULL,
-    divisName varchar(18) NOT NULL,
-    regionFips varchar(1) NOT NULL,
-    Primary key (divisID),
-    foreign key (regionID) references region(regionID)
-);
+CREATE TABLE divis (
+	divisID INT IDENTITY(1,1) NOT NULL,
+    divisFips NVARCHAR(1) NOT NULL,
+    divisName NVARCHAR(18) NOT NULL,
+    regionFips NVARCHAR(1) NOT NULL,
+    regionID INT NOT NULL REFERENCES region(regionID),
+    PRIMARY KEY (divisID)
+) ON [PRIMARY];
 
 /*STATE*/
-Create table state (
-	stateID int NOT NULL,
-    stateFips varchar(2) NOT NULL,
-    stateName varchar(20) NOT NULL,
-    stateAbbrev varchar(2) NOT NULL,
-Primary key (stateID)
-);
+CREATE TABLE state (
+	stateID INT IDENTITY(1,1) NOT NULL,
+    stateFips NVARCHAR(2) NOT NULL,
+    stateName NVARCHAR(20) NOT NULL,
+    stateAbbrev NVARCHAR(2) NOT NULL,
+    PRIMARY KEY (stateID)
+) ON [PRIMARY];
 
 /*METRO*/
-create table metro (
-	metroID int NOT NULL,
-    metroFips varchar(5) NOT NULL,
-    metroName varchar(125) NOT NULL,
-    primary key (metroID)
-);
+CREATE TABLE metro (
+	metroID INT IDENTITY(1,1) NOT NULL,
+    metroFips NVARCHAR(5) NOT NULL,
+    metroName NVARCHAR(125) NOT NULL,
+    PRIMARY KEY (metroID)
+) ON [PRIMARY];
 
 /*METRO DIVISION*/
-create table metdiv (
-	metdivID int NOT NULL,
-    metdivFips varchar(5) NOT NULL,
-    metdivName varchar(125) NOT NULL,
-    metroFips varchar(5) NOT NULL,
-    primary key (metdivID),
-    foreign key (metroID) references metro(metroID)
-);
+CREATE TABLE metdiv (
+	metdivID INT IDENTITY(1,1) NOT NULL,
+    metdivFips NVARCHAR(5) NOT NULL,
+    metdivName NVARCHAR(125) NOT NULL,
+    metroFips NVARCHAR(5) NOT NULL,
+    metroID INT NOT NULL REFERENCES metro(metroID),
+    PRIMARY KEY (metdivID)
+) ON [PRIMARY];
 
 /*COUNTY*/
-create table county (
-	countyID int NOT NULL,
-    countyFips varchar(5) NOT NULL,
-    countyName varchar(50) NOT NULL,
-    primary key (countyID)
-);
+CREATE TABLE county (
+	countyID INT IDENTITY(1,1) NOT NULL,
+    countyFips NVARCHAR(5) NOT NULL,
+    countyName NVARCHAR(50) NOT NULL,
+    PRIMARY KEY (countyID)
+) ON [PRIMARY];
 
 /*TRACT*/
-create table tract (
-	tractID int NOT NULL,
-    tractFips varchar(11) NOT NULL,
-    countyFips varchar(5) NOT NULL,
-    primary key (tractID),
-    foreign key (countyID) references county(countyID)
-);
+CREATE TABLE tract (
+	tractID INT IDENTITY(1,1) NOT NULL,
+    tractFips NVARCHAR(11) NOT NULL,
+    countyID REFERENCES county(countyID),
+    PRIMARY KEY (tractID)
+) ON [PRIMARY];
 
 /*BLOCK GROUP*/
-create table blkgrp (
-	blkgrpID int NOT NULL,
-    blkgrpFips varchar(12) NOT NULL,
-    tractFips varchar(11) NOT NULL,
-    primary key (blkgrpID),
-    foreign key (tractID) references tract(tractID)
-);
+CREATE TABLE blkgrp (
+	blkgrpID INT IDENTITY(1,1) NOT NULL,
+    blkgrpFips NVARCHAR(12) NOT NULL,
+    tractFips NVARCHAR(11) NOT NULL,
+    tractID REFERENCES tract(tractID),
+    PRIMARY KEY (blkgrpID)
+) ON [PRIMARY];
 
 /*GEOGRAPHY LEVEL*/
-create table geoLevel (
-    geolevel int NOT NULL,
-    geolevelName varchar(30) NOT NULL,
-    primary key (geolevel)
-);
+CREATE TABLE geoLevel (
+    geolevel INT IDENTITY(1,1) NOT NULL,
+    geolevelName NVARCHAR(30) NOT NULL,
+    PRIMARY KEY (geolevel)
+) ON [PRIMARY];
 
 /*Create geography table*/
 Create table geography (
-    geoID integer NOT NULL,
-    geoName varchar(125) NOT NULL,
-    geoLevel integer NOT NULL,
-    country varchar(2),
-    regionID varchar(1),
-    divisID varchar(1),
-    stateID varchar(2),
-    metroID varchar(5),
-    metdivID varchar(5),
-    countyID varchar(5),
-    tractID varchar(11),
-    blkgrpID varchar(12),
-    Primary key (geoID),
-    foreign key (geoLevel) references geolevel(geolevel),
-    foreign key (regionID) references region(regionID),
-    foreign key (divisID) references divis(divisID),
-    foreign key (stateID) references state(stateID),
-    foreign key (metroID) references metro(metroID),
-    foreign key (metdivID) references metdiv(metdivID),
-    foreign key (countyID) references county(countyID),
-    foreign key (tractID) references tract(tractID),
-    foreign key (blkgrpID) references blkgrp(blkgrpID)
-);
+    geoID INT IDENTITY(1,1) NOT NULL,
+    geoName NVARCHAR(125) NOT NULL,
+    geoLevel INT NOT NULL,
+    country NVARCHAR(2),
+    regionID NVARCHAR(1),
+    divisID NVARCHAR(1),
+    stateID NVARCHAR(2),
+    metroID NVARCHAR(5),
+    metdivID NVARCHAR(5),
+    countyID NVARCHAR(5),
+    tractID NVARCHAR(11),
+    blkgrpID NVARCHAR(12),
+    geoLevel REFERENCES geolevel(geolevel),
+    regionID REFERENCES region(regionID),
+    divisID  REFERENCES divis(divisID),
+    stateID  REFERENCES state(stateID),
+    metroID  REFERENCES metro(metroID),
+    metdivID REFERENCES metdiv(metdivID),
+    countyID REFERENCES county(countyID),
+    tractID  REFERENCES tract(tractID),
+    blkgrpID REFERENCES blkgrp(blkgrpID),
+    PRIMARY KEY (geoID)
+) ON [PRIMARY];
 
 /*Create theme table*/
-create table theme (
-    themeID integer NOT NULL,
-    themeName varchar(32) NOT NULL,
-    themeDesc varchar(255) NOT NULL,
-    Primary key (themeID)
-);
+CREATE TABLE theme (
+    themeID INT IDENTITY(1,1) NOT NULL,
+    themeName NVARCHAR(32) NOT NULL,
+    themeDesc NVARCHAR(255) NOT NULL,
+    PRIMARY KEY (themeID)
+) ON [PRIMARY];
 
 /*Create timePeriod table*/
-create table timePeriod (
-    timeID integer NOT NULL,
-    timeYear integer NOT NULL,
-    timeQuarter integer NOT NULL,
-    timeMonth integer NOT NULL,
-    Primary key (timeID)
-);
+CREATE TABLE timePeriod (
+    timeID INT IDENTITY(1,1) NOT NULL,
+    timeYear INT NOT NULL,
+    timeQuarter INT NOT NULL,
+    timeMonth INT NOT NULL,
+    PRIMARY KEY (timeID)
+) ON [PRIMARY];
 
 /*Create dataSource table*/
-create table dataSource (
-    sourceID integer NOT NULL,
-    sourceName varchar(15) NOT NULL,
-    sourceDesc varchar(100) NOT NULL,
-    Primary key (sourceID)
-);
+CREATE TABLE dataSource (
+    sourceID INT IDENTITY(1,1) NOT NULL,
+    sourceName NVARCHAR(15) NOT NULL,
+    sourceDesc NVARCHAR(100) NOT NULL,
+    PRIMARY KEY (sourceID)
+) ON [PRIMARY];
 
 /*Create indicatorType table*/
-create table indicatorType (
-    indicID integer NOT NULL,
-    indicName varchar(32) NOT NULL,
-    indicDesc varchar(300) NOT NULL,
-    themeID integer NOT NULL,
-    indicAvail varchar(14) NOT NULL,
-    indicQuality varchar(14) NOT NULL,
-    indicSpatial varchar(3) NOT NULL,
-    indicFreq varchar(20) NOT NULL,
-    indicNotes varchar(500) NULL,
-    Primary key (indicID),
-    foreign key (themeID) references theme(themeID)
-);
+CREATE TABLE indicatorType (
+    indicID INT IDENTITY(1,1) NOT NULL,
+    indicName NVARCHAR(32) NOT NULL,
+    indicDesc NVARCHAR(300) NOT NULL,
+    themeID INT NOT NULL,
+    indicAvail NVARCHAR(14) NOT NULL,
+    indicQuality NVARCHAR(14) NOT NULL,
+    indicSpatial NVARCHAR(3) NOT NULL,
+    indicFreq NVARCHAR(20) NOT NULL,
+    indicNotes NVARCHAR(500) NULL,
+    themeID REFERENCES theme(themeID),
+    PRIMARY KEY (indicID)
+) ON [PRIMARY];
 
 /*Create indicatorValue table*/
-create table indicatorValue (
+CREATE TABLE indicatorValue (
     indicValue decimal(38,5),
-    geoID integer NOT NULL,
-    timeID integer NOT NULL,
-    indicID integer NOT NULL,
-    primary key (geoID,timeID,indicID),
-    foreign key (geoID) references geography(geoID),
-    foreign key (timeID) references time_period(timeID),
-    foreign key (indicID) references indicator_type(indicID)
-);
+    geoID   INT NOT NULL,
+    timeID  INT NOT NULL,
+    indicID INT NOT NULL,
+    geoID   REFERENCES geography(geoID),
+    timeID  REFERENCES time_period(timeID),
+    indicID REFERENCES indicator_type(indicID),
+    PRIMARY KEY (geoID,timeID,indicID)
+) ON [PRIMARY];
