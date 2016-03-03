@@ -4,159 +4,151 @@
 /* Not all geographies necessary right now for Alexandria -- future-proofing */
 
 /*REGION*/
-Create table region (
-	regionID int NOT NULL,
-    regionFips varchar(1) NOT NULL,
-    regionName varchar(9) NOT NULL,
-    Primary key (regionID)
-);
+Create table regionFips (
+    regionID int IDENTITY(1,1) NOT NULL,
+    region_fips varchar(1) NOT NULL,
+    region_name varchar(9) NOT NULL
+) ON [PRIMARY];
 
 /*DIVISION*/
-Create table divis (
-	divisID int NOT NULL,
-    divisFips varchar(1) NOT NULL,
-    divisName varchar(18) NOT NULL,
-    regionFips varchar(1) NOT NULL,
-    Primary key (divisID),
-    foreign key (regionID) references region(regionID)
+Create table divis_fips (
+divis_fips varchar(1) NOT NULL,
+divis_name varchar(18) NOT NULL,
+region_fips varchar(1) NOT NULL,
+Primary key (divis_fips),
+foreign key (region_fips) references region_fips(region_fips)
 );
 
 /*STATE*/
-Create table state (
-	stateID int NOT NULL,
-    stateFips varchar(2) NOT NULL,
-    stateName varchar(20) NOT NULL,
-    stateAbbrev varchar(2) NOT NULL,
-Primary key (stateID)
+Create table state_fips (
+state_fips varchar(2) NOT NULL,
+state_name varchar(20) NOT NULL,
+state_abbrev varchar(2) NOT NULL,
+Primary key (state_fips)
 );
 
 /*METRO*/
-create table metro (
-	metroID int NOT NULL,
-    metroFips varchar(5) NOT NULL,
-    metroName varchar(125) NOT NULL,
-    primary key (metroID)
+create table metro_fips (
+metro_fips varchar(5) NOT NULL,
+metro_name varchar(125) NOT NULL,
+primary key (metro_fips)
 );
 
 /*METRO DIVISION*/
-create table metdiv (
-	metdivID int NOT NULL,
-    metdivFips varchar(5) NOT NULL,
-    metdivName varchar(125) NOT NULL,
-    metroFips varchar(5) NOT NULL,
-    primary key (metdivID),
-    foreign key (metroID) references metro(metroID)
+create table metdiv_fips (
+metdiv_fips varchar(5) NOT NULL,
+metdiv_name varchar(125) NOT NULL,
+metro_fips varchar(5) NOT NULL,
+primary key (metdiv_fips),
+foreign key (metro_fips) references metro_fips(metro_fips)
 );
 
 /*COUNTY*/
-create table county (
-	countyID int NOT NULL,
-    countyFips varchar(5) NOT NULL,
-    countyName varchar(50) NOT NULL,
-    primary key (countyID)
+create table county_fips (
+county_fips varchar(5) NOT NULL,
+county_name varchar(50) NOT NULL,
+primary key (county_fips)
 );
 
 /*TRACT*/
-create table tract (
-	tractID int NOT NULL,
-    tractFips varchar(11) NOT NULL,
-    countyFips varchar(5) NOT NULL,
-    primary key (tractID),
-    foreign key (countyID) references county(countyID)
+create table tract_fips (
+tract_fips varchar(11) NOT NULL,
+county_fips varchar(5) NOT NULL,
+primary key (tract_fips),
+foreign key (county_fips) references county_fips(county_fips)
 );
 
 /*BLOCK GROUP*/
-create table blkgrp (
-	blkgrpID int NOT NULL,
-    blkgrpFips varchar(12) NOT NULL,
-    tractFips varchar(11) NOT NULL,
-    primary key (blkgrpID),
-    foreign key (tractID) references tract(tractID)
+create table blkgrp_fips (
+blkgrp_fips varchar(12) NOT NULL,
+tract_fips varchar(11) NOT NULL,
+primary key (blkgrp_fips),
+foreign key (tract_fips) references tract_fips(tract_fips)
 );
 
 /*GEOGRAPHY LEVEL*/
-create table geoLevel (
-geolevel int NOT NULL,
-geolevelName varchar(30) NOT NULL,
+create table geolevel (
+geolevel integer NOT NULL,
+geolevel_name varchar(30) NOT NULL,
 primary key (geolevel)
 );
 
 /*Create geography table*/
 Create table geography (
-geoID integer NOT NULL,
-geoName varchar(125) NOT NULL,
-geoLevel integer NOT NULL,
+geo_id integer NOT NULL,
+geo_name varchar(125) NOT NULL,
+geolevel integer NOT NULL,
 country varchar(2),
-regionID varchar(1),
-divisID varchar(1),
-stateID varchar(2),
-metroID varchar(5),
-metdivID varchar(5),
-countyID varchar(5),
-tractID varchar(11),
-blkgrpID varchar(12),
-Primary key (geoID),
-foreign key (geoLevel) references geolevel(geolevel),
-foreign key (regionID) references region(regionID),
-foreign key (divisID) references divis(divisID),
-foreign key (stateID) references state(stateID),
-foreign key (metroID) references metro(metroID),
-foreign key (metdivID) references metdiv(metdivID),
-foreign key (countyID) references county(countyID),
-foreign key (tractID) references tract(tractID),
-foreign key (blkgrpID) references blkgrp(blkgrpID)
+region_fips varchar(1),
+divis_fips varchar(1),
+state_fips varchar(2),
+metro_fips varchar(5),
+metdiv_fips varchar(5),
+county_fips varchar(5),
+tract_fips varchar(11),
+blkgrp_fips varchar(12),
+Primary key (geo_id),
+foreign key (geolevel) references geolevel(geolevel),
+foreign key (region_fips) references region_fips(region_fips),
+foreign key (divis_fips) references divis_fips(divis_fips),
+foreign key (state_fips) references state_fips(state_fips),
+foreign key (metro_fips) references metro_fips(metro_fips),
+foreign key (metdiv_fips) references metdiv_fips(metdiv_fips),
+foreign key (county_fips) references county_fips(county_fips),
+foreign key (tract_fips) references tract_fips(tract_fips),
+foreign key (blkgrp_fips) references blkgrp_fips(blkgrp_fips)
 );
 
 /*Create theme table*/
 create table theme (
-themeID integer NOT NULL,
-themeName varchar(32) NOT NULL,
-themeDesc varchar(255) NOT NULL,
-Primary key (themeID)
+theme_id integer NOT NULL,
+theme_name varchar(32) NOT NULL,
+theme_desc varchar(255) NOT NULL,
+Primary key (theme_id)
 );
 
 /*Create time_period table*/
-create table timePeriod (
-timeID integer NOT NULL,
-timeYear integer NOT NULL,
-timeQuarter integer NOT NULL,
-timeMonth integer NOT NULL,
-Primary key (timeID)
+create table time_period (
+time_id integer NOT NULL,
+time_year integer NOT NULL,
+time_quarter integer NOT NULL,
+time_month integer NOT NULL,
+Primary key (time_id)
 );
 
 /*Create data source table*/
-create table dataSource (
-sourceID integer NOT NULL,
-sourceName varchar(15) NOT NULL,
-sourceDesc varchar(100) NOT NULL,
-Primary key (sourceID)
+create table data_source (
+source_id integer NOT NULL,
+source_name varchar(15) NOT NULL,
+source_desc varchar(100) NOT NULL,
+Primary key (source_id)
 );
 
 /*Create indicator type table*/
-create table indicatorType (
-indicID integer NOT NULL,
-indicName varchar(32) NOT NULL,
-indicDesc varchar(300) NOT NULL,
-themeID integer NOT NULL,
-indicAvail varchar(14) NOT NULL,
-indicQuality varchar(14) NOT NULL,
-indicSpatial varchar(3) NOT NULL,
-indicFreq varchar(20) NOT NULL,
-indicNotes varchar(500) NULL,
-Primary key (indicID),
-foreign key (themeID) references theme(themeID)
+create table indicator_type (
+indic_id integer NOT NULL,
+indic_name varchar(32) NOT NULL,
+indic_desc varchar(300) NOT NULL,
+theme_id integer NOT NULL,
+indic_avail varchar(14) NOT NULL,
+indic_quality varchar(14) NOT NULL,
+indic_spatial varchar(3) NOT NULL,
+indic_freq varchar(20) NOT NULL,
+indic_notes varchar(500) NULL,
+Primary key (indic_id),
+foreign key (theme_id) references theme(theme_id)
 );
 
 /*Create indicator value table*/
-create table indicatorValue (
-indicValue decimal(38,5),
-geoID integer NOT NULL,
-timeID integer NOT NULL,
-indicID integer NOT NULL,
-primary key (geoID,timeID,indicID),
-foreign key (geoID) references geography(geoID),
-foreign key (timeID) references time_period(timeID),
-foreign key (indicID) references indicator_type(indicID)
+create table indicator_value (
+indic_value decimal(38,5),
+geo_id integer NOT NULL,
+time_id integer NOT NULL,
+indic_id integer NOT NULL,
+primary key (geo_id,time_id,indic_id),
+foreign key (geo_id) references geography(geo_id),
+foreign key (time_id) references time_period(time_id),
+foreign key (indic_id) references indicator_type(indic_id)
 );
 
 /* Code below should be replaced with code to import CSV files containing these data points */
