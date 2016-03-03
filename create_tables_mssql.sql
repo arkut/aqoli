@@ -60,7 +60,7 @@ CREATE TABLE county (
 CREATE TABLE tract (
 	tractID INT IDENTITY(1,1) NOT NULL,
     tractFips NVARCHAR(11) NOT NULL,
-    countyID REFERENCES county(countyID),
+    countyID INT NOT NULL REFERENCES county(countyID),
     PRIMARY KEY (tractID)
 ) ON [PRIMARY];
 
@@ -69,7 +69,7 @@ CREATE TABLE blkgrp (
 	blkgrpID INT IDENTITY(1,1) NOT NULL,
     blkgrpFips NVARCHAR(12) NOT NULL,
     tractFips NVARCHAR(11) NOT NULL,
-    tractID REFERENCES tract(tractID),
+    tractID INT NOT NULL REFERENCES tract(tractID),
     PRIMARY KEY (blkgrpID)
 ) ON [PRIMARY];
 
@@ -84,25 +84,16 @@ CREATE TABLE geoLevel (
 Create table geography (
     geoID INT IDENTITY(1,1) NOT NULL,
     geoName NVARCHAR(125) NOT NULL,
-    geoLevel INT NOT NULL,
     country NVARCHAR(2),
-    regionID NVARCHAR(1),
-    divisID NVARCHAR(1),
-    stateID NVARCHAR(2),
-    metroID NVARCHAR(5),
-    metdivID NVARCHAR(5),
-    countyID NVARCHAR(5),
-    tractID NVARCHAR(11),
-    blkgrpID NVARCHAR(12),
-    geoLevel REFERENCES geolevel(geolevel),
-    regionID REFERENCES region(regionID),
-    divisID  REFERENCES divis(divisID),
-    stateID  REFERENCES state(stateID),
-    metroID  REFERENCES metro(metroID),
-    metdivID REFERENCES metdiv(metdivID),
-    countyID REFERENCES county(countyID),
-    tractID  REFERENCES tract(tractID),
-    blkgrpID REFERENCES blkgrp(blkgrpID),
+    geoLevel INT NOT NULL REFERENCES geolevel(geolevel),
+    regionID INT REFERENCES region(regionID),
+    divisID  INT REFERENCES divis(divisID),
+    stateID  INT REFERENCES state(stateID),
+    metroID  INT REFERENCES metro(metroID),
+    metdivID INT REFERENCES metdiv(metdivID),
+    countyID INT REFERENCES county(countyID),
+    tractID  INT REFERENCES tract(tractID),
+    blkgrpID INT REFERENCES blkgrp(blkgrpID),
     PRIMARY KEY (geoID)
 ) ON [PRIMARY];
 
@@ -136,24 +127,20 @@ CREATE TABLE indicatorType (
     indicID INT IDENTITY(1,1) NOT NULL,
     indicName NVARCHAR(32) NOT NULL,
     indicDesc NVARCHAR(300) NOT NULL,
-    themeID INT NOT NULL,
     indicAvail NVARCHAR(14) NOT NULL,
     indicQuality NVARCHAR(14) NOT NULL,
     indicSpatial NVARCHAR(3) NOT NULL,
     indicFreq NVARCHAR(20) NOT NULL,
     indicNotes NVARCHAR(500) NULL,
-    themeID REFERENCES theme(themeID),
+    themeID INT NOT NULL REFERENCES theme(themeID),
     PRIMARY KEY (indicID)
 ) ON [PRIMARY];
 
 /*Create indicatorValue table*/
 CREATE TABLE indicatorValue (
     indicValue decimal(38,5),
-    geoID   INT NOT NULL,
-    timeID  INT NOT NULL,
-    indicID INT NOT NULL,
-    geoID   REFERENCES geography(geoID),
-    timeID  REFERENCES time_period(timeID),
-    indicID REFERENCES indicator_type(indicID),
+    geoID   INT NOT NULL REFERENCES geography(geoID),
+    timeID  INT NOT NULL REFERENCES timePeriod(timeID),
+    indicID INT NOT NULL REFERENCES indicatorType(indicID),
     PRIMARY KEY (geoID,timeID,indicID)
 ) ON [PRIMARY];
