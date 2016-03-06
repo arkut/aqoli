@@ -1,0 +1,34 @@
+sourceID,sourceName,sourceDesc,
+1,ACS,American Community Survey
+2,Census,Decennial Census
+3,HSCC,Homeless Services Coordinating Committee
+4,MCOG,Metropolitan Washington Council of Governments
+5,ADH,Alexandria Department of Housing
+6,ADF,Alexandria Department of Finance
+7,VDSS,Virginia Department of Social Services
+8,ACPS,Alexandria City Public Schools
+9,VDE,Virginia Department of Education
+10,FNS,"US Department of Agriculture, Food and Nutrition Service"
+11,DAS,"Developmental Assets Survey, Alexandria City Public Schools"
+12,OHR,"Office of Human Rights, City of Alexandria"
+13,BRFSS,Virginia Behavioral Risk Factor Surveillance System
+14,VDH,Virginia Department of Health
+15,VDMAS,Virginia Department of Medical Assistance Services
+16,VDHS,Virginia Department of Health Statistics
+17,GIS,"GIS Division, Department of Planning and Zoning, City of Alexandria"
+18,DTES,"Department of Transportation and Environmental Services, City of Alexandria"
+19,DRPCA,"Department of Recreation, Parks, and Cultural Activities, City of Alexandria"
+20,ADCHS,Alexandria Department of Community and Human Services
+21,CCFCWS,"Center for Children and Families, Child Welfare Services"
+22,APD,Alexandria Police Department
+23,YRBSS,"Youth Risk Behavior Surveillance System, Alexandria City Public Schools"
+24,CDC,Centers for Disease Control and Prevention
+25,SAMHSA,Substance Abuse and Mental Health Services Administration
+26,ADHEHD,"Alexandria Department of Health, Environmental Health Division"
+27,AOEQ,Alexandria Office of Environmental Quality
+28,VAWC,Virginia American Water Company
+29,ODW,"Office of Drinking Water, Virginia Department of Health"
+30,VEC,Virginia Employment Commission
+31,CAFR,City of Alexandria Financial Report
+32,BLS,"US Department of Labor, Bureau of Labor Statistics"
+33,AEDP,Alexandria Economic Development Partnership

@@ -1,0 +1,11 @@
+geolevel,geolevelName
+1,Block group
+2,Census tract
+3,ZCTA
+4,County
+5,State
+6,Metropolitan Statistical Area
+7,Metropolitan Division
+8,Census division
+9,Census region
+10,Country

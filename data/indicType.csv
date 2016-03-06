@@ -1,0 +1,63 @@
+indicID,indicName,indicDesc,indicAvail,indicQuality,indicSpatial,indicFreq,indicNotes,themeID
+1,Pct_Res_StrongCommunity,Percentage of residents who report a strong sense of community,2,5,0,3,,1
+2,Pct_Res_Volunteer,Percentage of residents who report volunteering in the last 12 months,2,5,0,3,,1
+3,Pct_Inc_HsgCost,Percentage of income paid toward housing,1,4,1,1,,2
+4,Num_HomelessPersons,Number of homeless persons,1,4,0,1,,2
+5,Num_HsgUnits_50PctMedian,Number of housing units available for households earning below 50% of median income,1,4,1,1,,2
+6,Median_GrossRent,Median gross rent,1,4,1,1,,2
+7,Num_RealEstate_Foreclosures,Number of Real Estate foreclosures,1,4,1,1,,2
+8,Num_Res_FoodStamps,Number of Food Stamp recipients,1,4,0,1,,2
+9,Pct_Stud_FreeRedCostMeals,Percentage of ACPS children eligible to receive free and reduced cost meals at school,1,4,1,1,,2
+10,Pct_Youth_Encouraged,Percentage of youth who feel encouraged by adults,1,2,0,2,,3
+11,Pct_Commissions_Reflect_Demog,City commissions that reflect demographic makeup of Alexandria,3,2,0,3,,3
+12,Tolerance_Index,Tolerance index,2,2,0,3,,3
+13,Pct_Adults_with_Healthcare,Percentage of adults who currently report having any kind of health care coverage,1,2,0,2,,4
+14,Num_Child_SCHIP,Number of children participating in the State Childrens Health Insurance Program (SCHIP),1,4,2,1,,4
+15,Pct_Res_NoDoctor_Due_to_Cost,Percentage of people indicating they needed to see a doctor in the past year and could not due to cost,1,2,0,2,,4
+16,Pct_Prenatal_1stTrimester,Percentage of women who received prenatal care in the first trimester of pregnancy,1,4,0,1,,4
+17,Rate_NewHIVCases_100000,"Number of newly diagnosed cases of HIV per 100000 population",1,4,2,1,,4
+18,Pct_Adults_Health_GoodExcellent,Percentage of adults who rated their health good to excellent,1,4,2,1,,4
+19,Pct_Adults_Got_FluVaccine,Percentage of adults who received seasonal influenza vaccine,1,4,0,2,,4
+20,Pct_Adults_OverweightObese,Percentage of adults overweight or obese,1,3,0,2,,4
+21,Rate_HeartDiseaseMortal_100000,"Heart disease mortality rate per 100000 population",1,3,0,2,,4
+22,Rate_CancerMortality_100000,"Cancer mortality rate per 100000",1,4,0,1,,4
+23,Rate_InfantMortality_1000,Infant mortality per 1000 live births,1,4,0,1,,4
+24,Pct_Women_Prenatal_1stTri,Percentage of women who received prenatal care in the first trimester of pregnancy,1,3,0,1,,4
+25,Rate_TeenPregnancy_1000,Teen pregnancy rate,1,3,0,1,,4
+26,Pct_Res_WalktoWork,Percentage of Alexandria residents walking to work,1,3,1,1,,5
+27,Pct_Res_BiketoWork,Percentage of Alexandria residents who bike to work,1,3,1,1,,5
+28,Pct_TreeCanopyCoverage,Percentage of tree canopy coverage,1,3,1,2,,5
+29,Pct_Res_LiveNearPublicTransit,Percentage of residents who live within a walkable quarter mile of a public transportation point,1,4,1,1,,5
+30,Miles_SharedUsePaths,Miles of designated shared-use paths and bike lanes relative to street miles,1,3,0,2,,5
+31,Rate_OpenSpaceAcres_1000,Open space acres per 1000 residents,3,3,0,2,,5
+32,Pct_Res_TakePublicTransit_Work,Percentage of residents who take public transportation to work,1,4,1,1,,5
+33,Num_ChildAbuseInvestigations,Child abuse and neglect investigations with a founded disposition,1,3,2,1,,6
+34,Num_Perceive_PhysicalSafety,Perception of physical safety in the community,2,5,2,3,,6
+35,Num_MajorCrimes_Total,Number of major crimes,1,4,1,1,Can break down into 7 categories,6
+36,Num_NuisanceCrimes,Number of nuisance crimes,1,4,1,1,,6
+37,Avg_ResponseTime_StructureFires,Average response time in minutes to Alexandria structure fires,1,3,0,1,,6
+38,Pct_DisasterSupplyKit_Prepared,"Percentage of population reporting a Disaster Supply Kit with emergency supplies such as water food and medicine has been prepared in home",2,5,0,3,,6
+39,Pct_Adults_Depress_Get_Care,Percentage of adults with recognized depression who receive treatment,2,5,0,3,,7
+40,Pct_Adults_Got_MentalHealthCare,Percentage of adults needing mental health care who stated that they did obtain professional help for emotional or mental health issues in the past year,2,5,0,3,,7
+41,Pct_Stud_Considered_Suicide,Percentage of adolescents who reported that they have seriously considered suicide,1,2,0,2,,7
+42,Num_MentallyUnhealthyDays_Last30,Mentally unhealthy days during the last 30 days,1,2,0,2,,7
+43,Pct_Adults_Smoke,Percentage of adults who smoke cigarettes,1,3,0,2,,8
+44,Pct_Youth_NeverSmoked,Percentage of youth who never smoked cigarettes,1,2,0,2,,8
+45,Pct_Youth_Used_Alcohol_Last30,Percentage of adolescents who report having used alcohol in the past 30 days,1,2,0,2,"Broken out by grade 7-12",8
+46,Pct_Youth_Used_IllicitRx,Percentage of youth who report illicitly using prescription drugs,3,2,0,3,,8
+47,Pct_Res_SpecTrtmnt_SubAbuse,Percentage of residents who received specialty treatment for substance abuse or dependence,3,2,0,3,,8
+48,Pct_Adults_Eat_5Plus_FruitsVeg,Percentage of adults eating 5 or more fruits or vegetables a day,1,2,0,2,,9
+49,Pct_Tracts_HealthierFoodRetail,Percentage of Alexandria Census tracts that have healthier daily food retailers located within the tract or within one-half mile of tract boundaries,1,3,1,3,,9
+50,Pct_Res_Participate_WIC,Percentage of residents participating in the WIC program,1,4,0,1,,9
+51,Avg_Num_FoodSafety_Violations,Average number of critical violations per food establishment inspection in Alexandria,1,3,0,1,,9
+52,Num_AirQualityActionDays,Number of air quality action days,1,4,0,1,,10
+53,Num_Hazard_Pest_Complaints,Number of environmental hazards and pests complaints,1,3,0,1,,10
+54,Pct_SolidWaste_Recycled,Percentage of solid waste recycled,1,3,0,2,,10
+55,Num_WaterQuality_Violations,Number of water quality violations,1,4,0,1,,10
+56,Median_Household_Income,Median household income,1,4,1,1,,11
+57,Pct_Age16_64_In_Workforce,Percentage of population ages 16-64 in the workforce,1,4,1,1,,11
+58,Pct_Res_BelowPoverty,Percentage of population below the poverty level,1,4,1,1,,11
+59,Rate_OnTimeGraduation,ACPS On-Time Graduation Rate,1,2,0,1,,11
+60,Pct_Res_Unemployed,Prevalence of local unemployment,1,4,0,1,,11
+61,Pct_Adults_Diploma_or_GED,Percentage of adults with at least a high school diploma or general education diploma,1,4,1,1,,11
+62,Pct_Retail_Occupancy,Percentage retail occupancy,3,1,0,1,,11
