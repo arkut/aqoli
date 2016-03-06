@@ -1,5 +1,5 @@
-regionID,regionFips,regionName,geolevel
-1,1,Northeast,9
-2,2,South,9
-3,3,Midwest,9
-4,4,West,9
+regionID,regionFips,regionName
+1,1,Northeast
+2,2,South
+3,3,Midwest
+4,4,West

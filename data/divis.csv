@@ -1,10 +1,10 @@
-divisID,divisFIPS,divisName,regionID,geolevel
-1,1,New England,1,8
-2,2,Middle Atlantic,1,8
-3,3,East North Central,2,8
-4,4,West North Central,2,8
-5,5,South Atlantic,3,8
-6,6,East South Central,3,8
-7,7,West South Central,3,8
-8,8,Mountain,4,8
-9,9,Pacific,4,8
+divisID,divisFIPS,divisName,regionID
+1,1,New England,1
+2,2,Middle Atlantic,1
+3,3,East North Central,2
+4,4,West North Central,2
+5,5,South Atlantic,3
+6,6,East South Central,3
+7,7,West South Central,3
+8,8,Mountain,4
+9,9,Pacific,4
